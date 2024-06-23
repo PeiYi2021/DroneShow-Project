@@ -1,0 +1,15 @@
+import bpy
+
+# 获取当前选定的所有物体
+selected_objects = bpy.context.selected_objects
+
+# 遍历选定的所有物体
+for ob in selected_objects:
+    # 获取名为COPY_LOCATION_1的约束
+    constraint = ob.constraints.get("COPY_LOCATION_A")
+
+    # 如果约束存在，则执行操作
+    if constraint:
+        # 禁用约束并保持变换
+        bpy.ops.object.visual_transform_apply()
+        constraint.influence = 0
